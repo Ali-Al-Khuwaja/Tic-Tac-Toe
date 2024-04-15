@@ -1,0 +1,44 @@
+:root{
+    --white: #F5F7F8;
+    --black: #45474B;
+    --yellow: #F4CE14;
+    --green: #495E57;
+    background-color: var(--white);
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    gap: 10px;
+}
+.XOGrid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3,1fr);
+}
+.cell{
+    width: 150px;
+    height: 150px;
+}
+.bottom{
+    border-bottom: 2px solid var(--black);
+} 
+.right{
+    border-right: 2px solid var(--black);
+}
+.left{
+    border-left: 2px solid var(--black);
+}
+.top{
+    border-top: 2px solid var(--black);
+}
+.pacifico-regular {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+h1{
+    color: var(--black);
+}  
