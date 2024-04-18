@@ -5,6 +5,8 @@
     --green: #495E57;
     background-color: var(--white);
     color: var(--black);
+    font-size: larger;
+    font-weight: 900;
 }
 .container{
     display: flex;
@@ -42,9 +44,8 @@
     font-weight: 400;
     font-style: normal;
 }
-h1{
-    color: var(--black);
-}  
-p{
-    margin: 0;
+
+.flex{
+    display: flex;
+    flex-direction: column;
 }
