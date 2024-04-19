@@ -1,132 +1,38 @@
-//  keep in mind to use these 1 . closure  2. factory functions 3. module pattern
-// it's not about how nice i code it , i always hit a wall , so i will code it the dumb but working game 
-
-
+// //  keep in mind to use these 1 . closure  2. factory functions 3. module pattern
 const state = document.querySelector('.state');
 const game = ['/','/','/','/','/','/','/','/','/']; //this has a fixed size.
-const cell1 = document.querySelector('.cell1');
-const cell2 = document.querySelector('.cell2');
-const cell3 = document.querySelector('.cell3');
-const cell4 = document.querySelector('.cell4');
-const cell5 = document.querySelector('.cell5');
-const cell6 = document.querySelector('.cell6');
-const cell7 = document.querySelector('.cell7');
-const cell8 = document.querySelector('.cell8');
-const cell9 = document.querySelector('.cell9');
 
-let cellNumber ;
-cell1.addEventListener('click',()=>{
-  ID = 1;
-  display(ID , cell1);
-});
-cell2.addEventListener('click',()=>{
-  ID = 2;
-  display(ID,cell2);
-});
+// create an event listener to the 9 cell i got that can signal if they got clicked using an ID
+for (let i = 1; i <= 9; i++) {
+  const cell = document.querySelector(`.cell${i}`); // i love this feature
+  cell.addEventListener('click', () => {
+    ID = i;
+    display(ID, cell);
+  });
+};
 
-cell3.addEventListener('click',()=>{
-  ID = 3;
-  display(ID,cell3);
-});
-
-cell4.addEventListener('click',()=>{
-  ID = 4;
-  display(ID,cell4);
-});
-
-cell5.addEventListener('click',()=>{
-  ID = 5;
-  display(ID,cell5);
-});
-
-cell6.addEventListener('click',()=>{
-  ID = 6;
-  display(ID,cell6);
-});
-
-cell7.addEventListener('click',()=>{
-  ID = 7;
-  display(ID,cell7);
-});
-
-cell8.addEventListener('click',()=>{
-  ID = 8;
-  display(ID,cell8);
-});
-cell9.addEventListener('click',()=>{
-  ID = 9;
-  display(ID,cell9);
-});
-
-// this achieves the same results but gives me another bigger problem , the dumb way i kept using above has the advantage 
+// this tries to achieve the same result but it gives me another bigger problem , look like i need to read about forEach later on
+// const cell = document.querySelectorAll('.cell');
 // let cellID = 0 ;
-// cell.forEach((element)=>{
-//     element.addEventListener('click' , ()=>{
+// problem -> e.g ['x', 'o', 'x', 'o', 'x', 'o', 'x', '/', '/'] , this doesn't work as expected
+// cell.forEach(()=>{
+//     cell.addEventListener('click' , ()=>{
 //         cellID = cellID + 1 ; // 1 then 2 then 3  ...
-//         element.id = cellID;
-//         display(cellID);
+//         display(cellID,cell);
 //     });
 // });
 
-let counter = 0 ;
-function display(ID,cell){
-    let marker = 'x';
-    let playerChoice = ID ;
-    if(counter%2!==0){
-        marker = 'o';
-    }
-    if(playerChoice===1){
-        game[0] = marker
-        cell.textContent = `${marker}`;
-        counter++
-        checkIfWon()
-    }else if (playerChoice===2){
-        game[1] = marker
-        cell.innerHTML = `${marker}`;
-        counter++
-        checkIfWon()
-    }else if (playerChoice===3){
-        game[2] = marker
-        cell.innerHTML = `${marker}`;
-        counter++
-        checkIfWon()
-    }else if (playerChoice==4){
-        game[3] = marker
-        cell.innerHTML = `${marker}`;
-        counter++
-        checkIfWon()
-    }else if (playerChoice===5){
-        game[4] = marker
-        cell.innerHTML = `${marker}`;
-        counter++
-        checkIfWon()
-    }else if (playerChoice===6){
-        game[5] = marker
-        cell.innerHTML = `${marker}`;
-        counter++
-        checkIfWon()
-    }else if (playerChoice===7){
-        game[6] = marker
-        cell.innerHTML = `${marker}`;
-        counter++
-        checkIfWon()
-    }else if (playerChoice===8){
-        game[7] = marker
-        cell.innerHTML = `${marker}`;
-        counter++
-        checkIfWon()
-    }else if (playerChoice===9){
-        game[8] = marker
-        cell.innerHTML = `${marker} `;
-        counter++
-        checkIfWon()
-    }
-};
 
-// function gameModule(){
-//     // IIFE module pattern , this one is like a closure but it does remember values 
-//     return displayInConsole;
-// };
+// fancy if statement right? , any way this is the power of arguments of functions
+let counter = 0 ;
+function display(ID, cell) {
+  const marker = counter % 2 !== 0 ? 'o' : 'x';
+  // i wanted to to compare it with if statements but there is not need for that , remember ali , this is a function 
+  game[ID - 1] = marker;
+  cell.textContent = marker;
+  counter++;
+  checkIfWon();
+}
 
 function checkIfWon() {
     // Check rows for X
@@ -189,25 +95,21 @@ function checkIfWon() {
       state.innerHTML = `O has won`;
     }
   }
-  const gameModule = (function () {
-    const state = document.querySelector('.state');
-    const game = ['/', '/', '/', '/', '/', '/', '/', '/', '/'];
-  
-    // Private functions for displaying and checking win conditions
-    function display(ID, cell) {
-      // ... same logic as before ...
-    }
-  
-    function checkIfWon() {
-      // ... same logic as before ...
-    }
-  
-    // Public methods exposed by the module
-    return {
-      handleClick: function(cell, ID) {
-        display(ID, cell);
-        checkIfWon();
-      }
-    };
-  })();
+// I don't understand this , i rather keep my human code than use this ai gen  , i'm only human after all
+// function checkIfWon() {
+//   const winningCombos = [
+//     [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+//     [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+//     [0, 4, 8], [2, 4, 6] // Diagonals
+//   ];
+
+//   for (const combo of winningCombos) {
+//     const [a, b, c] = combo;
+//     if (game[a] && game[a] === game[b] && game[a] === game[c]) {
+//       state.innerHTML = `${game[a].toUpperCase()} has won`;
+//       return;
+//     }
+//   }
+// }
+
   
