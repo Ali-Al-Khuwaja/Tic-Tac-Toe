@@ -1,4 +1,4 @@
-:root{
+:root {
     --white: #F5F7F8;
     --black: #45474B;
     --yellow: #F4CE14;
@@ -8,7 +8,8 @@
     font-size: larger;
     font-weight: 900;
 }
-.container{
+
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,37 +17,40 @@
     flex-direction: column;
     gap: 10px;
 }
-.XOGrid{
+
+.XOGrid {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-template-columns: repeat(3,1fr);
-    gap: 0;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    /* this creates the lines */
+    background: var(--black);
+    /* the lines color */
+    padding: 3px;
 }
-.cell{
-    width: 150px;
-    height: 150px;
+
+.cell {
+    width: 125px;
+    height: 125px;
     text-align: center;
     font-size: larger;
+    background: var(--white);
+    /* cell background */
 }
-.bottom{
-    border-bottom: 2px solid var(--black);
-} 
-.right{
-    border-right: 2px solid var(--black);
-}
-.left{
-    border-left: 2px solid var(--black);
-}
-.top{
-    border-top: 2px solid var(--black);
-}
+
 .pacifico-regular {
     font-family: "Pacifico", cursive;
     font-weight: 400;
     font-style: normal;
 }
 
-.flex{
+.pacifico-light {
+    font-family: "Pacifico", cursive;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.flex {
     display: flex;
     flex-direction: column;
 }
